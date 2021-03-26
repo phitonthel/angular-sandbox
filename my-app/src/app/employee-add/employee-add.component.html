@@ -1,0 +1,60 @@
+<br><h1 style="text-align: center;">Add Employee</h1>
+
+<div class="container col-5">
+  <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm.value)">
+    <div class="form-group">
+
+      <label for="firstName" class="text-primary fs-3">First Name</label>
+      <input
+        ngModel #firstName="ngModel" required minlength="3"
+        type="text" 
+        class="form-control"
+        name="firstName"
+        id="firstName" 
+        placeholder="First Name"></div>
+    <div class="alert alert-danger" *ngIf="!firstName.valid && firstName.touched">
+      <div *ngIf="firstName?.errors?.required">First Name is required</div>
+      <div *ngIf="firstName?.errors?.minlength">Minimum 3 characters</div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName" class="text-primary fs-3">Last Name</label>
+      <input
+        ngModel
+        type="text" 
+        class="form-control"
+        name="lastName"
+        id="lastName" 
+        placeholder="Last Name"></div>
+
+    <div class="form-group">
+      <label for="gender" class="text-primary fs-3">Gender</label>
+      <select 
+        ngModel #gender="ngModel" required
+        name="gender" 
+        class="form-control" 
+        id="gender">
+        <option value="" selected disabled hidden>Choose here</option>
+        <option>Laki-Laki</option>
+        <option>Perempuan</option>
+      </select></div>
+    <div class="alert alert-danger" *ngIf="!gender.value && gender.touched">
+      Gender is required</div>
+
+    <div class="form-group">
+      <label for="contactNumber" class="text-primary fs-3">Contact Number</label>
+      <input
+        ngModel #contactNumber="ngModel" required
+        type="number" 
+        class="form-control"
+        name="contactNumber"
+        id="contactNumber" 
+        placeholder="Contact Number"></div>
+    <div class="alert alert-danger" *ngIf="!contactNumber.valid && contactNumber.touched">
+      <div *ngIf="contactNumber?.errors?.required">Contact Number is required</div>
+    </div>
+
+    <button class="btn btn-outline-primary col-5 m-2">Submit</button>
+  </form>
+  <!-- <button class="btn btn-outline-primary col-5 m-2" (click)="add()">Add</button> -->
+</div>

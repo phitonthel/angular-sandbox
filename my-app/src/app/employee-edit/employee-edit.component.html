@@ -1,0 +1,50 @@
+<h1>Edit Employee</h1>
+
+<div *ngIf="employee">
+  <h4>{{employee.firstName | uppercase}} {{employee.lastName | uppercase}}</h4>
+  <table class="table table-bordered table-hover">
+    <tbody>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">{{employee.id}}</th>
+      </tr>
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">
+          <input
+            type="text" 
+            [(ngModel)]="employee.firstName">
+        </th>
+      </tr>
+      <tr>
+        <th scope="col">Last Name</th>
+        <th scope="col">
+          <input
+            type="text" 
+            [(ngModel)]="employee.lastName">
+        </th>
+      </tr>
+      <tr>
+        <th scope="col">Gender</th>
+        <th scope="col">
+          <input [(ngModel)]="employee.gender" type="radio" id="male" name="gender" value="Laki-Laki">
+          <label for="male">Male</label><br>
+          <input [(ngModel)]="employee.gender" type="radio" id="female" name="gender" value="Perempuan">
+          <label for="female">Female</label><br>
+          <input [(ngModel)]="employee.gender" type="radio" id="other" name="gender" value="Other">
+          <label for="other">Other</label> 
+        </th>
+      </tr>
+      <tr>
+        <th scope="col">Contact Number</th>
+        <th scope="col">
+          <input
+            type="text" 
+            [(ngModel)]="employee.contactNumber">
+        </th>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-outline-success" (click)="edit()">Save</button>
+  <button type="button" class="btn btn-outline-danger" (click)="cancel()">Cancel</button>
+</div>

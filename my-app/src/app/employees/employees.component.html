@@ -1,0 +1,70 @@
+<h1>My Employees</h1>
+
+<table class="table table-bordered table-hover">
+  <thead class="table-primary">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Contact Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <th scope="row">{{employee.id}}</th>
+      <td><a routerLink="/detail-employee/{{employee.id}}">
+        {{employee.firstName}} {{employee.lastName}}
+      </a></td>
+      <td>{{employee.gender}}</td>
+      <td>{{employee.contactNumber}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<a routerLink="/add-employee">
+  <button class="btn btn-outline-primary"> Add Employee</button>
+</a>
+
+
+<!-- <div class="header row">
+  <div class="col-1">
+    ID
+  </div>
+  <div class="col-2">
+    Name
+  </div>
+  <div class="col-2">
+    Gender
+  </div>
+  <div class="col-2">
+    Contact Number
+  </div>
+</div>
+
+<div class="row" *ngFor="let employee of employees">
+  <div class="col-1">
+    {{employee.id}}
+  </div>
+  <div class="col-2">
+    <a routerLink="/detail/{{employee.id}}">
+      {{employee.firstName}} {{employee.lastName}}
+    </a>
+  </div>
+  <div class="col-2">
+    {{employee.gender}}
+  </div>
+  <div class="col-2">
+    {{employee.contactNumber}}
+  </div>
+</div> -->
+
+<!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
+
+<!-- <a routerLink="/detail/{{employee.id}}">
+  <span class="badge">{{employee.id}}</span> 
+  {{employee.firstName}} {{employee.lastName}}
+</a>
+<p>{{employee.gender}}</p>
+<p>{{employee.contactNumber}}</p>
+<button class="delete" title="Delete"
+  (click)="delete(employee)">X</button> -->
