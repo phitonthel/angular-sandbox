@@ -19,6 +19,8 @@ import { EmployeeDetailComponent } from './employee-detail/employee-detail.compo
 import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { InterviewsComponent } from './interviews/interviews.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   imports: [
@@ -41,7 +43,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     EmployeeDetailComponent,
     EmployeeAddComponent,
     EmployeeEditComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    InterviewsComponent,
+    FormComponent
   ],
   bootstrap: [ AppComponent ]
 })

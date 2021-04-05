@@ -11,6 +11,10 @@ import { EmployeeDetailComponent } from './employee-detail/employee-detail.compo
 import { EmployeeAddComponent } from './employee-add/employee-add.component'
 import { EmployeeEditComponent } from './employee-edit/employee-edit.component'
 
+// Interviews
+import { InterviewsComponent } from './interviews/interviews.component'
+import { FormComponent } from './form/form.component'
+
 // Misc
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 
@@ -23,6 +27,8 @@ const routes: Routes = [
   { path: 'detail-employee/:id', component: EmployeeDetailComponent},
   { path: 'add-employee', component: EmployeeAddComponent},
   { path: 'edit-employee/:id', component: EmployeeEditComponent},
+  { path: 'interviews', component: InterviewsComponent},
+  { path: 'form', component: FormComponent},
   { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404
 ];
 

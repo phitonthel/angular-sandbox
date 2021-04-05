@@ -1,11 +1,9 @@
-class Tree {
-  height = 0
-
-  constructor (height) {
-    this.height = height || 999
+function foo() {
+    console.log('Hello');
+    return 42;
   }
-}
-
-let pear = new Tree()
-
-console.log(pear.height);
+  
+  const x = foo.call(); // same as foo()
+  console.log(x);
+  const y = foo.call(); // same as foo()
+  console.log(y);
