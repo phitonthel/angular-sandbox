@@ -11,25 +11,42 @@ export class InterviewsComponent implements OnInit {
   percentage: number = 0
   messages: string[] = []
   monteSuccess: number = 0
+  monteOptions: boolean = false
+  monteOptionsCount: number = 0
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  enableMonteCarlo(): void {
+    this.monteOptions = true
+    this.monteOptionsCount = -Infinity
+  }
+
+  monteWithLoading(): void {
+    this.messages = ['Loading...']
+    setTimeout(() => {
+      this.interviewsMonte()
+    }, 100)
+  }
+
   interviewsMonte(): void {
+    console.log('loading');
+    
     this.monteSuccess = 0
+
     for (let i = 0; i < this.nInterviews; i++) {
-      this.interviews(true)
+      this.interviewsBulk(true)
     }
     const output = []
-    output.push(`You did ${this.nInterviews} interviews`, `Each interview consist of ${this.nParticipant} applicants`, `Every interview, you interviewed ${Math.floor(this.nParticipant * (this.percentage / 100))} applicants to get the baseline score, rejected the first ${Math.floor(this.nParticipant * (this.percentage / 100))} and interviewed the rest ${this.nParticipant - (Math.floor(this.nParticipant * (this.percentage / 100)))}`, `You successfully hired the best applicants ${this.monteSuccess} out of ${this.nInterviews}`, `Your accuracy is ${(this.monteSuccess / this.nInterviews) * 100}%`)
+    output.push(`You did ${this.nInterviews} batch of interviews`, `Each batch of interview consist of ${this.nParticipant} applicants`, `Every interview, you interviewed ${Math.floor(this.nParticipant * (this.percentage / 100))} applicants to get the baseline score, rejected the first ${Math.floor(this.nParticipant * (this.percentage / 100))} and interviewed the rest ${this.nParticipant - (Math.floor(this.nParticipant * (this.percentage / 100)))}`, `You successfully hired the best applicants ${this.monteSuccess} out of ${this.nInterviews} interviews`, `Your accuracy is ${(this.monteSuccess / this.nInterviews) * 100}%`)
     this.messages = output
   }
 
   interviews(monte: boolean): void {
     console.log('interviews () running')
-    console.log('nParticipant=', this.nParticipant, 'percentage=', this.percentage)
+    this.monteOptionsCount++
     
     const nApplicants = this.nParticipant
     const perc = this.percentage / 100
@@ -95,6 +112,54 @@ export class InterviewsComponent implements OnInit {
     }
 
     if (!monte) this.messages = output
+  }
+
+  interviewsBulk(monte: boolean): void {
+    this.monteOptionsCount++
+    
+    const nApplicants = this.nParticipant
+    const perc = this.percentage / 100
+
+    const output = []
+    const nApplicantsBaseline = Math.floor(nApplicants * perc)
+    const nextApplicants = nApplicants - nApplicantsBaseline
+
+    // generate applicants
+    const applicants = []
+    const constant = Math.random() * 1000
+    const baseMultiplier = Math.random() * 1000
+    for (let i = 0; i < nApplicants; i++) {
+      applicants.push([i + 1, (Math.random() * baseMultiplier) + constant])
+    }
+
+    // sorted applicants
+    const sortedApplicants = [...applicants].sort(function (a, b) { return b[1] - a[1] })
+
+    // interviews some of them to get the average/baseline score
+    let applicantBaseline = [0, 0]
+    for (let i = 0; i < nApplicantsBaseline; i++) {
+      const applicant = applicants[i]
+      if (applicant[1] > applicantBaseline[1]) {
+        applicantBaseline = [applicant[0], applicant[1]]
+      }
+    }
+
+    let hiredApplicant:any = []
+    for (let i = nApplicantsBaseline; i < applicants.length; i++) {
+      const applicant = applicants[i]
+      if (applicant[1] > applicantBaseline[1]) {
+        hiredApplicant = applicant
+        break
+      }
+    }
+
+    if (monte) {
+      if (hiredApplicant.length !== 0) {
+        if (hiredApplicant[0] === sortedApplicants[0][0]) {
+          this.monteSuccess++
+        }
+      }
+    }
   }
 
 }

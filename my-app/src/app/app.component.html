@@ -10,13 +10,16 @@
 <!-- <app-heroes></app-heroes> -->
 
 <!--  navbar-light bg-light -->
-<h1>phitonthel Angular Sandbox</h1>
-<nav class="navbar">
-  <a class="navbar-brand" routerLink="/employees" routerLinkActive="active-link">Home</a>
-  <a class="navbar-brand" routerLink="/interviews" routerLinkActive="active-link">Interviews</a>
-  <a class="navbar-brand" routerLink="/form" routerLinkActive="active-link">Form</a>
-  <a class="navbar-brand" routerLink="/services">Services</a>
-  <a class="navbar-brand" routerLink="/about">About</a>
+<div class="row">
+  <div class="col-1"><img src="https://angular.kr/assets/images/logos/angular/angular.svg" height="50px" width="50px"></div>
+  <div class="col"><h1 style="color:crimson">phitonthel Angular Sandbox</h1></div>
+</div> 
+<nav class="navbar justify-content-center" style="color: crimson;">
+  <!-- <a class="navbar-brand" routerLink="/employees" routerLinkActive="active-link" style="color: brown;">Home</a> -->
+  <a class="navbar-brand col-1 text-center" routerLink="/interviews" routerLinkActive="active-link" style="color: brown;">Interviews</a>
+  <a class="navbar-brand col-1 text-center" routerLink="/form" routerLinkActive="active-link" style="color: brown;">Form</a>
+  <!-- <a class="navbar-brand" routerLink="/services" style="color: brown;">Services</a> -->
+  <a class="navbar-brand col-1 text-center" routerLink="/about" style="color: brown;">About</a>
 </nav>
 
 

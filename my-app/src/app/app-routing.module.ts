@@ -16,10 +16,11 @@ import { InterviewsComponent } from './interviews/interviews.component'
 import { FormComponent } from './form/form.component'
 
 // Misc
+import { AboutComponent } from './about/about.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 
 const routes: Routes = [
-  { path: '', redirectTo: '/employees', pathMatch: 'full' },
+  { path: '', redirectTo: '/interviews', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'heroes', component: HeroesComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'edit-employee/:id', component: EmployeeEditComponent},
   { path: 'interviews', component: InterviewsComponent},
   { path: 'form', component: FormComponent},
+  { path: 'about', component: AboutComponent},
   { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404
 ];
 

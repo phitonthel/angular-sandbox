@@ -21,6 +21,7 @@ import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { InterviewsComponent } from './interviews/interviews.component';
 import { FormComponent } from './form/form.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { FormComponent } from './form/form.component';
     EmployeeEditComponent,
     PageNotFoundComponent,
     InterviewsComponent,
-    FormComponent
+    FormComponent,
+    AboutComponent
   ],
   bootstrap: [ AppComponent ]
 })

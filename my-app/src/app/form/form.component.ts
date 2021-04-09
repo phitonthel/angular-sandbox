@@ -18,21 +18,22 @@ export class FormComponent implements OnInit {
 
   submit () {
     const payload = {
-      contact: this.contact,
-      answer: Number(this.answer)
+      name: this.contact,
+      number: Number(this.answer)
     }
     console.log(payload)
-    if (!payload.contact || !payload.answer) {
+    if (!payload.name || !payload.number) {
       Swal.fire({
         title: 'Error!',
-        text: 'Please fill all the form buddy! Otherwise my server is gonna be blown :(',
+        text: 'Please fill all the form with a valid input buddy!',
         icon: 'error'
       })
       return
     }
     axios({
       method: 'POST',
-      url: 'http://localhost:3000/users',
+      url: 'https://phitonthel-server-sandbox.herokuapp.com/database',
+      // url: 'http://localhost:3000/database',
       data: payload
     })
       .then((response) => {
